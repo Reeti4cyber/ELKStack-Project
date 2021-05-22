@@ -48,10 +48,10 @@ The configuration details of each machine may be found below.
 
 | Name     | Function         | IP Address | Operating System |
 | -------- | ---------------- | ---------- | ---------------- |
-| Jump Box | Gateway          | 10.0.0.12  | Linux            |
-| Web-1    | Webserver (DVWA) | 10.0.0.10  | Linux            |
-| Web-2    | Webserver (DVWA) | 10.0.0.11  | Linux            |
-| Web-3    | Webserver (DVWA) | 10.0.0.13  | Linux            |
+| Jump Box | Gateway          | 10.0.0.4   | Linux            |
+| Web-1    | Webserver (DVWA) | 10.0.0.6   | Linux            |
+| Web-2    | Webserver (DVWA) | 10.0.0.7   | Linux            |
+| Web-3    | Webserver (DVWA) | 10.0.0.11  | Linux            |
 | ELK-VM   | Elastic Server   | 10.2.0.4   | Linux            |
 
 ### Access Policies
@@ -62,18 +62,18 @@ Only the Jump Box machine can accept connections from the Internet. Access to th
 - [Your Public IP address] e.g [119.18.22.67]
 
 Machines within the network can only be accessed by Jump Box virtual machine.
-- The Jump Box VM has access to the ELK VM. The IP address of the Jump Box VM is 10.0.0.12
+- The Jump Box VM has access to the ELK VM. The IP address of the Jump Box VM is 10.0.0.4
 
 A summary of the access policies in place can be found in the table below.
 
-| Name     	      | Publicly Accessible | Allowed IP Addresses     |
-| ------------------- | ------------------- | ------------------------ |
-| Jump Box 	      | No                  | 119.18.22.67             |
-| Web-1    	      | No                  | 52.255.45.188, 10.0.0.12 |
-| Web-2       	      | No                  | 52.255.45.188, 10.0.0.12 |
-| Web-3    	      | No                  | 52.255.45.188, 10.0.0.12 |
-| ELK-VM   	      | No                  | 52.255.45.188, 10.0.0.12 |
-| Load Balancer       | No                  | 52.255.45.188, 10.0.0.12 |
+| Name     	      | Publicly Accessible | Allowed IP Addresses      |
+| ------------------- | ------------------- | ------------------------  |
+| Jump Box 	      | No                  | 40.115.68.114, 10.0.0.4   |
+| Web-1    	      | No                  | 13.70.128.120, 10.0.0.6   |
+| Web-2       	      | No                  | 13.70.128.120, 10.0.0.7   |
+| Web-3    	      | No                  |              , 10.0.0.11  |
+| ELK-VM   	      | No                  | 20.37.44.222 , 10.2.0.4   |
+| Load Balancer       | No                  | 13.70.128.120,            |
 
 ### Elk Configuration
 
@@ -93,9 +93,9 @@ The following screenshot displays the result of running `docker ps` after succes
 
 ### Target Machines & Beats
 This ELK server is configured to monitor the following machines:
-- Web-1, 10.0.0.10
-- Web-2, 10.0.0.11
-- Web-3, 10.0.0.13
+- Web-1, 10.0.0.6
+- Web-2, 10.0.0.7
+- Web-3, 10.0.0.11
 
 We have installed the following Beats on these machines:
 - Filebeat
@@ -133,9 +133,9 @@ Save this file in  /etc/ansible/files/filebeat-config.yml.
 	# /etc/ansible/hosts
 
  	[webservers]
- 	10.0.0.10 ansible_python_interpreter=/usr/bin/python3
+ 	10.0.0.6 ansible_python_interpreter=/usr/bin/python3
+ 	10.0.0.7 ansible_python_interpreter=/usr/bin/python3
  	10.0.0.11 ansible_python_interpreter=/usr/bin/python3
- 	10.0.0.13 ansible_python_interpreter=/usr/bin/python3
 
        	[elk]
 	10.2.0.4 ansible_python_interpreter=/usr/bin/python3
@@ -150,4 +150,3 @@ Save this file in  /etc/ansible/files/filebeat-config.yml.
   The public IP of ELK stack with allowed port number [20.36.46.94:5601].
 
 _As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc._
-
