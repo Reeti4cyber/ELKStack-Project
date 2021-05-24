@@ -136,7 +136,6 @@ Save this file in  /etc/ansible/files/filebeat-config.yml.
  	10.0.0.6 ansible_python_interpreter=/usr/bin/python3
  	10.0.0.7 ansible_python_interpreter=/usr/bin/python3
  	10.0.0.11 ansible_python_interpreter=/usr/bin/python3
-
        	[elk]
 	10.2.0.4 ansible_python_interpreter=/usr/bin/python3
 
