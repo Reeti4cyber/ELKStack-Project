@@ -2,10 +2,10 @@
 First Project Cyber Security
 
 ## Automated ELK Stack Deployment
-
 The files in this repository were used to configure the network depicted below.
 
 ![ELKStackServer](Diagrams/ELKStackProject.jpg)
+
 
 These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the ansible playbook and config file may be used to install only certain pieces of it, such as Filebeat.
 
@@ -33,26 +33,26 @@ The main purpose of this network is to expose a load-balanced and monitored inst
 
 Load balancing ensures that the application will be highly available, in addition to restricting access to the network.
 - What aspect of security do load balancers protect?
-  - A load balancer intelligently distributes traffic, also adds additional layers of security to your system without any changes to your application. LB also protects the system from DDoS attacks by shifting attack traffic.
+   - Load Balancing plays a crucial role in the security as the systems are becoming more and more cloaud oriented.The load balancer distributes the traffic intelligently thus defends the systems against distributed denial-of-service (DDoS) attacks. It distributes the workloads across multiple servers,y known as a server cluster. It adds an additional layer of security to system without impacting the application in any way.Load balancer improves service availability and reduces downtime.
  - What is the advantage of a jump box?
-   - The advantage of a jump box is to give access to the user from a single node that can be secured and monitored. The use of a jump box guarantees a single, secure, point of entry to network resources.
+   - The advantage of a jump box is that it is a single, secure point of entry to organizations other network resources. It prevents the public exposure of VM's.It is a SSH gateway to a remote network, and can be configured to connect to other host in some other security zone, for example in a demilitarized zone (DMZ). It  offers controlled access between different security zones.
 
 Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the files and system statistics.
 - What does Filebeat watch for? 
-  - Filebeat watches for any information in the file system which has been changed and when it has. Filebeat is a lightweight shipper for forwarding and centralizing log data.
+  -  Filebeat is a lightweight shipper, installed as an agent on the server for forwarding and centralizing log data.Log files or locations specified by the user are watched and monitored and then Filebeat collects log events. Once collected the log events are forwarded either to Elasticsearch or Logstash for indexing. 
 - What does Metricbeat record?
-    - Metricbeat is a lightweight shipper that you can install on your servers to periodically collect metrics from the operating system and from services running on the server. Metricbeat takes the metrics and statistics that collects and ships them to the output you specify, such as Elasticsearch or Logstash.
+    - Metricbeat is a lightweight shipper. It records and periodically collects metrics from the operating system and from services running on the server. Once the metrics and statistics are collected, Metricbeat ships them to the output specified by the user such as Elasticsearch or Logstash.
 
 The configuration details of each machine may be found below.
 
 
-| Name     | Function         | IP Address | Operating System |
-| -------- | ---------------- | ---------- | ---------------- |
-| Jump Box | Gateway          | 10.0.0.4   | Linux            |
-| Web-1    | Webserver (DVWA) | 10.0.0.6   | Linux            |
-| Web-2    | Webserver (DVWA) | 10.0.0.7   | Linux            |
-| Web-3    | Webserver (DVWA) | 10.0.0.11  | Linux            |
-| ELK-VM   | Elastic Server   | 10.2.0.4   | Linux            |
+| Name     | Function                      | IP Address | Operating System |
+| -------- | ----------------------------  | ---------- | ---------------- |
+| Jump Box | Gateway                       | 10.0.0.4   | Linux            |
+| Web-1    | Webserver (DVWA)              | 10.0.0.6   | Linux            |
+| Web-2    | Webserver (DVWA)              | 10.0.0.7   | Linux            |
+| Web-3    | Webserver (DVWA)              | 10.0.0.11  | Linux            |
+| ELK-VM   | Elastic Server( Monitoring)   | 10.2.0.4   | Linux            |
 
 ### Access Policies
 
