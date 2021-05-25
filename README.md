@@ -74,11 +74,11 @@ A summary of the access policies in place can be found in the table below.
 
 | Name     	      | Publicly Accessible | Allowed IP Addresses      |
 | ------------------- | ------------------- | ------------------------  |
-| Jump Box 	      | Yes                 |  218.215.105.127          |
-| Web-1    	      | No                  |  10.0.0.4                 |
+| Jump Box 	      | Yes, SSH -22        |  218.215.105.127          |
+| Web-1    	      | No                  |  10.0.0.4, Network_LB     |
 | Web-2       	      | No                  |  10.0.0.4                 |
 | Web-3    	      | No                  |  10.0.0.4                 |
-| ELK-VM   	      | No                  | 218.215.105.127:5601               |
+| ELK-VM   	      | No                  | 218.215.105.127:5601      |
 | Load Balancer       | No                  | 13.70.128.120,            |
 
 ### Elk Configuration
@@ -142,7 +142,8 @@ Save this file in  /etc/ansible/files/filebeat-config.yml.
 
  Answer the following questions to fill in the blanks:
 - Which file is the playbook? Where do you copy it?
-   - filebeat-config.yml is the playbook and we copied this to /etc/filebeat/filebeat.yml
+    -  elk_install.yml file is the playbook file copy this to /etc/ansible/roles/elk_install.yml
+  
 
 - Which file do you update to make Ansible run the playbook on a specific machine? How do I specify which machine to install the ELK server on versus which to install Filebeat on?
    - I updated the Ansible containter host file etc/ansible/host. 
@@ -163,6 +164,6 @@ Save this file in  /etc/ansible/files/filebeat-config.yml.
   	  tasks:
 
 - Which URL do you navigate to in order to check that the ELK server is running?
-  The public IP of ELK stack with allowed port number [20.36.46.94:5601].
+  The public IP of ELK stack with allowed port number [20.37.242.179:5601].
 
 _As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc._
