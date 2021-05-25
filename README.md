@@ -28,6 +28,10 @@ This document contains the following details:
 
 
 ### Description of the Topology
+![TopologyNetwork](Diagrams/TopologyVirtualNetwork.png)
+
+
+![TopologyElk](Diagrams/TopologyElk.png)
 
 The main purpose of this network is to expose a load-balanced and monitored instance of DVWA, the D*mn Vulnerable Web Application.
 
@@ -46,43 +50,53 @@ Integrating an ELK server allows users to easily monitor the vulnerable VMs for 
 The configuration details of each machine may be found below.
 
 
-| Name     | Function                      | IP Address | Operating System |
-| -------- | ----------------------------  | ---------- | ---------------- |
-| Jump Box | Gateway                       | 10.0.0.4   | Linux            |
-| Web-1    | Webserver (DVWA)              | 10.0.0.6   | Linux            |
-| Web-2    | Webserver (DVWA)              | 10.0.0.7   | Linux            |
-| Web-3    | Webserver (DVWA)              | 10.0.0.11  | Linux            |
-| ELK-VM   | Elastic Server( Monitoring)   | 10.2.0.4   | Linux            |
+| Name     | Function                      | IP Address                    | Operating System |
+| -------- | ----------------------------  | ----------------------------- | ---------------- |
+| Jump Box | Gateway                       | 10.0.0.4 , 40.115.68.114      | Linux            |
+| Web-1    | Webserver (DVWA)              | 10.0.0.6 , 13.70.128.120      | Linux            |
+| Web-2    | Webserver (DVWA)              | 10.0.0.7 ,  13.70.128.120     | Linux            |
+| Web-3    | Webserver (DVWA)              | 10.0.0.11,                    | Linux            |
+| ELK-VM   | Elastic Server( Monitoring)   | 10.2.0.4 ,  20.37.242.179     | Linux            |
 
 ### Access Policies
 
 The machines on the internal network are not exposed to the public Internet. 
 
 Only the Jump Box machine can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses:
-- [Your Public IP address] e.g [119.18.22.67]
+- [218.215.105.127] 
 
 Machines within the network can only be accessed by Jump Box virtual machine.
 - The Jump Box VM has access to the ELK VM. The IP address of the Jump Box VM is 10.0.0.4
+- The Jump Box VM has access to all the three Webservers in the Virtual Network. The IP address of the three webservers are given in the above table.
+- 
 
 A summary of the access policies in place can be found in the table below.
 
 | Name     	      | Publicly Accessible | Allowed IP Addresses      |
 | ------------------- | ------------------- | ------------------------  |
-| Jump Box 	      | No                  | 40.115.68.114, 10.0.0.4   |
-| Web-1    	      | No                  | 13.70.128.120, 10.0.0.6   |
-| Web-2       	      | No                  | 13.70.128.120, 10.0.0.7   |
-| Web-3    	      | No                  |              , 10.0.0.11  |
-| ELK-VM   	      | No                  | 20.37.44.222 , 10.2.0.4   |
+| Jump Box 	      | Yes                 |  218.215.105.127          |
+| Web-1    	      | No                  |  10.0.0.4                 |
+| Web-2       	      | No                  |  10.0.0.4                 |
+| Web-3    	      | No                  |  10.0.0.4                 |
+| ELK-VM   	      | No                  | 218.215.105.127:5601               |
 | Load Balancer       | No                  | 13.70.128.120,            |
 
 ### Elk Configuration
 
-Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because...
-- Ansible allows IT administrators to automate their daily tasks and save a lot of time. That frees them to focus on efforts that help deliver more value to the business by spending time on more important tasks.
+Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because it doesnot leave any room for vulnerabilities.
+What is the main advantage of automating configuration with Ansible?
+- It is free as it is open source.
+- Simplicity, no coding skills needed.
+- User can model highly complex IT workflows.
+- Entire application environment can be orchestrated irrespective of its deployment and can also customize  based on the user needs.
+- No need to install any other software or firewall ports on the client systems.
+- More space for application resources on the server.
+- As it is completely automated thus it helps to deliver more value to the business by spending time on more important tasks.
 
 The playbook implements the following tasks:
 - Install Docker
-- Install python3-pip
+- Install python3-pipInstall docker.io
+- Increase virtual memory
 - Install Docker python module
 - Set the vm.max_map_count to 262144
 - Download and launch a docker elk container
@@ -93,9 +107,11 @@ The following screenshot displays the result of running `docker ps` after succes
 
 ### Target Machines & Beats
 This ELK server is configured to monitor the following machines:
-- Web-1, 10.0.0.6
-- Web-2, 10.0.0.7
-- Web-3, 10.0.0.11
+| Name     | IP Address 
+| -------- | ------------------  | 
+| Web-1    | 10.0.0.6            |  
+| Web-2    | 10.0.0.7            |   
+| Web-3    | 10.0.0.11           |
 
 We have installed the following Beats on these machines:
 - Filebeat
@@ -122,6 +138,7 @@ SSH into the control node and follow the steps below:
 Save this file in  /etc/ansible/files/filebeat-config.yml.
 
 - Run the playbook, and navigate to  to check that the installation worked as expected.
+ ![Kibana](Diagrams/Kibana.png)
 
  Answer the following questions to fill in the blanks:
 - Which file is the playbook? Where do you copy it?
