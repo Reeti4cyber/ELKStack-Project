@@ -50,13 +50,14 @@ Integrating an ELK server allows users to easily monitor the vulnerable VMs for 
 The configuration details of each machine may be found below.
 
 
-| Name     | Function                      | IP Address                    | Operating System |
-| -------- | ----------------------------  | ----------------------------- | ---------------- |
-| Jump Box | Gateway                       | 10.0.0.4 , 40.115.68.114      | Linux            |
-| Web-1    | Webserver (DVWA)              | 10.0.0.6 , 13.70.128.120      | Linux            |
-| Web-2    | Webserver (DVWA)              | 10.0.0.7 ,  13.70.128.120     | Linux            |
-| Web-3    | Webserver (DVWA)              | 10.0.0.11,                    | Linux            |
-| ELK-VM   | Elastic Server( Monitoring)   | 10.2.0.4 ,  20.37.242.179     | Linux            |
+| Name        | Function                      | IP Address                    | Operating System |
+| ----------- | ----------------------------  | ----------------------------- | ---------------- |
+| Jump Box    | Gateway                       | 10.0.0.4 , 40.115.68.114      | Linux            |
+| Web-1       | Webserver (DVWA)              | 10.0.0.6 , 13.70.128.120      | Linux            |
+| Web-2       | Webserver (DVWA)              | 10.0.0.7 ,  13.70.128.120     | Linux            |
+| Web-3       | Webserver (DVWA)              | 10.0.0.11,                    | Linux            |
+| ELK-VM      | Elastic Server( Monitoring)   | 10.2.0.4 ,  20.37.242.179     | Linux            |
+| Network_LB  | Load Balancer                 | 13.70.128.120                 | Linux            |
 
 ### Access Policies
 
@@ -75,11 +76,11 @@ A summary of the access policies in place can be found in the table below.
 | Name     	      | Publicly Accessible | Allowed IP Addresses      |
 | ------------------- | ------------------- | ------------------------  |
 | Jump Box 	      | Yes, SSH -22        |  218.215.105.127          |
-| Web-1    	      | No                  |  10.0.0.4, Network_LB     |
-| Web-2       	      | No                  |  10.0.0.4                 |
-| Web-3    	      | No                  |  10.0.0.4                 |
-| ELK-VM   	      |Yes, TCP/5601 & 9200 | 218.215.105.127           |
-| Load Balancer       |Yes HTTP Port 80     | 13.70.128.120,            |
+| Web-1    	      | No                  |  10.0.0.4, 13.70.128.120  |
+| Web-2       	      | No                  |  10.0.0.4, 13.70.128.120  |
+| Web-3    	      | No                  |  10.0.0.4, 13.70.128.120  |
+| ELK-VM   	      |Yes, TCP/5601 & 9200 |  218.215.105.127          |
+| Load Balancer       |Yes HTTP Port 80     |  218.215.105.127          |
 
 ### Elk Configuration
 
