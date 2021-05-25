@@ -78,8 +78,8 @@ A summary of the access policies in place can be found in the table below.
 | Web-1    	      | No                  |  10.0.0.4, Network_LB     |
 | Web-2       	      | No                  |  10.0.0.4                 |
 | Web-3    	      | No                  |  10.0.0.4                 |
-| ELK-VM   	      | No                  | 218.215.105.127:5601      |
-| Load Balancer       | No                  | 13.70.128.120,            |
+| ELK-VM   	      |Yes, TCP/5601 & 9200 | 218.215.105.127           |
+| Load Balancer       |Yes HTTP Port 80     | 13.70.128.120,            |
 
 ### Elk Configuration
 
@@ -167,3 +167,4 @@ Save this file in  /etc/ansible/files/filebeat-config.yml.
   The public IP of ELK stack with allowed port number [20.37.242.179:5601].
 
 _As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc._
+
