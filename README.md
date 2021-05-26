@@ -148,17 +148,20 @@ Save this file in  /etc/ansible/files/filebeat-config.yml.
 
 - Which file do you update to make Ansible run the playbook on a specific machine? How do I specify which machine to install the ELK server on versus which to install Filebeat on?
    - I updated the Ansible containter host file etc/ansible/host. 
-   - I added a group called [elk] and specify the Private IP of ELK-VM [10.2.0.4]
-	# /etc/ansible/hosts
+   - I added a group called [elk] and specify the Private IP of ELK-VM [10.2.0.4] in /etc/ansible/hosts file.
+ 	
+	[webservers]
+	
+ 	- 10.0.0.6 ansible_python_interpreter=/usr/bin/python3
+ 	- 10.0.0.7 ansible_python_interpreter=/usr/bin/python3
+ 	- 10.0.0.11 ansible_python_interpreter=/usr/bin/python3
+	
+       	
+	 [elk]
+	 
+	- 10.2.0.4 ansible_python_interpreter=/usr/bin/python3
 
- 	[webservers]
- 	10.0.0.6 ansible_python_interpreter=/usr/bin/python3
- 	10.0.0.7 ansible_python_interpreter=/usr/bin/python3
- 	10.0.0.11 ansible_python_interpreter=/usr/bin/python3
-       	[elk]
-	10.2.0.4 ansible_python_interpreter=/usr/bin/python3
-
-   - Then I updated filebeat-playbook.yml & metricbeat-playbook.yml header part
+   Then I updated filebeat-playbook.yml & metricbeat-playbook.yml header part
 	- name: installing and launching metricbeat
   	  hosts: webservers
   	  become: yes
