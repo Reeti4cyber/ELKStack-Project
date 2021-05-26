@@ -18,7 +18,7 @@ These files have been tested and used to generate a live ELK deployment on Azure
 - Ansible Metricbeat Playbook
 - Ansible Metricbeat Config file
 
-This document contains the following details:
+## This document contains the following details:
 - Description of the Topology
 - Access Policies
 - ELK Configuration
@@ -33,7 +33,7 @@ This document contains the following details:
 
 ![TopologyElk](Diagrams/TopologyElk.png)
 
-The main purpose of this network is to expose a load-balanced and monitored instance of DVWA, the D*mn Vulnerable Web Application.
+The main purpose of this network is to expose a load-balanced and monitored instance of DVWA, the `D*mn Vulnerable Web Application`.
 
 Load balancing ensures that the application will be highly available, in addition to restricting access to the network.
 - What aspect of security do load balancers protect?
@@ -64,12 +64,12 @@ The configuration details of each machine may be found below.
 The machines on the internal network are not exposed to the public Internet. 
 
 Only the Jump Box machine can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses:
-- [218.215.105.127] 
+- `[218.215.105.127] `
 
 Machines within the network can only be accessed by Jump Box virtual machine.
 - The Jump Box VM has access to the ELK VM. The IP address of the Jump Box VM is 10.0.0.4
 - The Jump Box VM has access to all the three Webservers in the Virtual Network. The IP address of the three webservers are given in the above table.
-- 
+
 
 A summary of the access policies in place can be found in the table below.
 
@@ -126,8 +126,9 @@ These Beats allow us to collect the following information from each machine:
 In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned: 
 
 SSH into the control node and follow the steps below:
-- Copy the filebeat.cfg file to /etc/ansible/filebeat-config.yml
+- Copy the `filebeat.cfg file to /etc/ansible/filebeat-config.yml `
 - Update the file filebeat-config.yml to include 
+	```
 	output.elasticsearch:
 	hosts: ["10.2.0.4:9200"]
 	username: "elastic"
@@ -136,39 +137,41 @@ SSH into the control node and follow the steps below:
 	setup.kibana:
 	host: "10.2.0.4:5601"
 
-Save this file in  /etc/ansible/files/filebeat-config.yml.
+ - Save this file in  `/etc/ansible/files/filebeat-config.yml`.
 
 - Run the playbook, and navigate to  to check that the installation worked as expected.
+- 
  ![Kibana](Diagrams/Kibana.png)
 
  Answer the following questions to fill in the blanks:
 - Which file is the playbook? Where do you copy it?
-    -  elk_install.yml file is the playbook file copy this to /etc/ansible/roles/elk_install.yml
+    -  `elk_install.yml` file is the playbook file copy this to ` /etc/ansible/roles/elk_install.yml`
   
 
 - Which file do you update to make Ansible run the playbook on a specific machine? How do I specify which machine to install the ELK server on versus which to install Filebeat on?
-   - I updated the Ansible containter host file etc/ansible/host. 
+   - I updated the Ansible containter host file `etc/ansible/host`. 
    - I added a group called [elk] and specify the Private IP of ELK-VM [10.2.0.4] in /etc/ansible/hosts file.
  	
+	```
 	[webservers]
 	
  	- 10.0.0.6 ansible_python_interpreter=/usr/bin/python3
  	- 10.0.0.7 ansible_python_interpreter=/usr/bin/python3
- 	- 10.0.0.11 ansible_python_interpreter=/usr/bin/python3
-	
-       	
+ 	- 10.0.0.11 ansible_python_interpreter=/usr/bin/python3 
+	      	
 	 [elk]
 	 
-	- 10.2.0.4 ansible_python_interpreter=/usr/bin/python3
+	- 10.2.0.4 ansible_python_interpreter=/usr/bin/python3 
 
-   Then I updated filebeat-playbook.yml & metricbeat-playbook.yml header part
-	- name: installing and launching metricbeat
+ -  Then I updated filebeat-playbook.yml & metricbeat-playbook.yml header part
+	 ```
+	  name: installing and launching metricbeat
   	  hosts: webservers
   	  become: yes
   	  tasks:
 
 - Which URL do you navigate to in order to check that the ELK server is running?
-  The public IP of ELK stack with allowed port number [20.37.242.179:5601].
+  - The public IP of ELK stack with allowed port number `[20.37.242.179:5601]`.
 
 _As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc._
 
