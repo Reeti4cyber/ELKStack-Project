@@ -30,8 +30,8 @@ These files have been tested and used to generate a live ELK deployment on Azure
 ### Description of the Topology
 ![TopologyNetwork](Diagrams/TopologyVirtualNetwork.png)
 
-
-![TopologyElk](Diagrams/TopologyElk.png)
+ 
+ ![TopologyElk](Diagrams/TopologyElk.png)
 
 The main purpose of this network is to expose a load-balanced and monitored instance of DVWA, the `D*mn Vulnerable Web Application`.
 
@@ -51,7 +51,7 @@ The configuration details of each machine may be found below.
 
 
 | Name        | Function                      | IP Address                    | Operating System |
-| ----------- | ----------------------------  | ----------------------------- | ---------------- |
+|-----------  | ----------------------------  |------------------------------ | ---------------- |
 | Jump Box    | Gateway                       | 10.0.0.4 , 40.115.68.114      | Linux            |
 | Web-1       | Webserver (DVWA)              | 10.0.0.6 , 13.70.128.120      | Linux            |
 | Web-2       | Webserver (DVWA)              | 10.0.0.7 ,  13.70.128.120     | Linux            |
